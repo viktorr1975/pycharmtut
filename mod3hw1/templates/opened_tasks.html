@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Незавершённые задачи</h3>
+    {% for task in tasks %}
+        <div class="tasks mb-4">
+            <div class="tasks-body">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ task.name }}
+                    <span class="badge bg-primary rounded-pill">{{ task.pk }}</span>
+                  </li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

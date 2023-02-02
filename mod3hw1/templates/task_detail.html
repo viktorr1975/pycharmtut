@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="task mb-4">
+        <div class="task-body">
+            <h4 class="task-title"> Задача № {{ task.pk }} </h4>
+            <p class="task-text">Наименование: {{ task.name }} </p>
+            <p class="task-text">Задача создана: {{ task.created }}</p>
+				{% if task.done %}
+                    <p class="task-text">Задача завершена: {{ task.complited }}</p>
+                {% else %}
+                    <p class="task-text"> Задача не завершена</p>
+	        	{% endif %}
+        </div>
+    </div>
+{% endblock content %}
