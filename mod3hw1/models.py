@@ -4,21 +4,27 @@ from django.utils import timezone
 # Create your models here.
 from django.db import models
 
+
 class Tasks(models.Model):
     """Задачи"""
 
-    name = models.TextField(blank=False, null=False, help_text="название задания") # null is purely database-related, whereas blank is validation-related
+    name = models.TextField(
+        blank=False, null=False, help_text="название задания"
+    )  # null is purely database-related, whereas blank is validation-related
     done = models.BooleanField(blank=False, null=False, help_text="сделано")
-    created = models.DateTimeField(blank=False, null=False, auto_now=True, help_text="дата и время создания")
-    complited = models.DateTimeField(blank=True, null=True, help_text="дата и время завершения")
+    created = models.DateTimeField(
+        blank=False, null=False, auto_now=True, help_text="дата и время создания"
+    )
+    complited = models.DateTimeField(
+        blank=True, null=True, help_text="дата и время завершения"
+    )
 
     def __str__(self):
         """переопределение строкового представления объекта."""
         return f"Список задач {self.id}|{self.name}|{self.done}|{self.created}|{self.complited}"
 
     class Meta:
-        """ установка дополнительных параметров модели
-        """
+        """установка дополнительных параметров модели"""
 
         verbose_name_plural = "Tasks"
 

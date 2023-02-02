@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('mod3hw1', '0003_alter_tasks_created'),
+        ("mod3hw1", "0003_alter_tasks_created"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='tasks',
-            options={'verbose_name_plural': 'Tasks'},
+            name="tasks",
+            options={"verbose_name_plural": "Tasks"},
         ),
     ]

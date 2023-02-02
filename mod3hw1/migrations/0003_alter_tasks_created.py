@@ -4,15 +4,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('mod3hw1', '0002_alter_tasks_complited'),
+        ("mod3hw1", "0002_alter_tasks_complited"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='tasks',
-            name='created',
-            field=models.DateTimeField(auto_now=True, help_text='дата и время создания'),
+            model_name="tasks",
+            name="created",
+            field=models.DateTimeField(
+                auto_now=True, help_text="дата и время создания"
+            ),
         ),
     ]
