@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class Mod3Hw1Config(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'mod3hw1'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "mod3hw1"

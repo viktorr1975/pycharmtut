@@ -4,21 +4,30 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='tasks',
+            name="tasks",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.TextField(help_text='название задания')),
-                ('done', models.BooleanField(help_text='сделано')),
-                ('created', models.DateTimeField(help_text='дата и время создания')),
-                ('complited', models.DateTimeField(help_text='дата и время завершения')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.TextField(help_text="название задания")),
+                ("done", models.BooleanField(help_text="сделано")),
+                ("created", models.DateTimeField(help_text="дата и время создания")),
+                (
+                    "complited",
+                    models.DateTimeField(help_text="дата и время завершения"),
+                ),
             ],
         ),
     ]

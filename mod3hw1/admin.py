@@ -7,7 +7,7 @@ from mod3hw1.models import Tasks
 class TasksAdmin(admin.ModelAdmin):
     """Отображение модели Cart в админке."""
 
-    list_display = (    #отображение данных по столбцам
+    list_display = (  # отображение данных по столбцам
         "id",
         "name",
         "done",
