@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="center">
+	<form method="post">
+	 	{%csrf_token %}
+
+	 	<h2>Создайте задачу</h2>
+            <div class="form-group">
+                <label>Название задачи: </label>
+                {{ form.name }}
+            </div>
+			<div class="form-group">
+                <label>Выполнено: </label>
+                {{ form.done }}
+            </div>
+
+{% comment 'пока не разобрался' %}
+		{% for field in form %}
+			{% if field.name == 'completed' %}
+				<p>
+					{{ field.label_tag }}
+					{{ field }}
+				</p>
+				{% if field.errors %}
+	        		<small class="error">{{ field.errors|striptags  }}</small>
+	        	{% endif %}
+			{% else %}
+	    		{{ field.label_tag }}
+	        	{{ field }}
+	        	{% if field.errors %}
+	        		<small class="error">{{ field.errors|striptags  }}</small>
+	        	{% endif %}
+	        {% endif %}
+		{% endfor %}
+	{% endcomment %}
+
+		<div class="form-buttons">
+			<input type="submit" value="Сохранить" class="btn btn-primary"/>
+			<a href="{% url 'create' %}" class="btn btn-secondary">Отменить</a>
+		</div>
+	</form>
+</div>
+{% endblock content %}
