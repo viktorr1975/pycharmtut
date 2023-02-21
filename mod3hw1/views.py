@@ -6,11 +6,37 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from mod3hw1.models import Tasks
+from .models import Tasks
 from django.urls import reverse, reverse_lazy
-
+from rest_framework import viewsets, mixins
+from .serializers import TasksSerializer
+from .filters import TasksFilterSet
+from rest_framework.schemas.openapi import AutoSchema
 
 # Create your views here.
+class TasksViewSet(
+    mixins.ListModelMixin,  # GET /articles
+    mixins.CreateModelMixin,  # POST /articles
+    mixins.RetrieveModelMixin,  # GET /articles/1
+    mixins.DestroyModelMixin,  # DELETE /articles/1
+    mixins.UpdateModelMixin,  # PUT /articles/1
+    viewsets.GenericViewSet
+):
+    """DRF API"""
+
+    queryset = Tasks.objects.all()
+    serializer_class = TasksSerializer
+#    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = TasksFilterSet
+    ordering_fields = ['id', 'name']    #Specifying which fields may be ordered against
+    ordering = ['id']                   #default ordering
+
+    schema = AutoSchema(
+        tags=['Tasks'],
+        component_name='Tasks',
+        operation_id_base='Tasks',
+    )
+
 class AllTasksListView(ListView):
     """Представление для отображения списка назавершённых задач."""
 

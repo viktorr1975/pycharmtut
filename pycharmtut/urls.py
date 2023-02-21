@@ -14,9 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
 from mod3hw1.views import AllTasksListView, MyTasksListView, TaskCreateView, TaskDetailView, TaskUpdateView, TaskDeleteView
 from django.urls import path, include
+from rest_framework.schemas import get_schema_view
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
@@ -26,4 +26,11 @@ urlpatterns = [
     path("task/<int:pk>", TaskDetailView.as_view(), name="task-detail"),
     path("edit_task/<int:pk>", TaskUpdateView.as_view(), name="task-update"),
     path('delete_task/<int:pk>/', TaskDeleteView.as_view(), name='task-delete'),
+    path("api/", include("mod3hw1.urls")),
+
+    path('openapi/', get_schema_view(
+        title="Studying",
+        description="API for all things …",
+        version="1.0.0"
+    ), name='openapi-schema'),
 ]
