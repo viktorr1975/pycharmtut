@@ -8,7 +8,7 @@ class TasksFilterSet(dj_filters.FilterSet):
 #    name = dj_filters.CharFilter(field_name="name", lookup_expr="icontains")
 
 #    order_by_field = "ordering"  # the query parameter name (http://example.com/api/users?ordering=username)
-    is_active = dj_filters.BooleanFilter(field_name="done", exclude=True, label="is_active")
+#    is_active = dj_filters.BooleanFilter(field_name="done", exclude=True, label="is_active")
 
 
 
@@ -16,5 +16,5 @@ class TasksFilterSet(dj_filters.FilterSet):
         model = Tasks
 
         fields = [
-            "name",
+            "title",
         ]

@@ -35,8 +35,7 @@ class TasksSerializer(serializers.ModelSerializer):
         model = Tasks
         # read_only_fields = ["id", "slug", "created", "modified"]
         # fields = read_only_fields + ["title"]
-        #fields = "__all__"
-        exclude = ["done"]
+        fields = "__all__"
         
         
         # fields = "__all__"
@@ -49,23 +48,23 @@ class TasksSerializer(serializers.ModelSerializer):
     #         raise serializers.ValidationError("Название должно быть с заглавной буквы")
     #     return value
 
-    def to_internal_value(self, data):
-        # if self.context["request"]._request.method == "POST":
-        #     # if not data.get("title"):
-        #     #     data["title"] = "default_title"
-        #     if not data.get("content"):
-        #         data["content"] = "default_content"
-        # if not data.get("title"):
-        # data["name"] = data["name"] + "  23"
-        # data["done"] = True
-        return super().to_internal_value(data)
+    # def to_internal_value(self, data):
+    #     # if self.context["request"]._request.method == "POST":
+    #     #     # if not data.get("title"):
+    #     #     #     data["title"] = "default_title"
+    #     #     if not data.get("content"):
+    #     #         data["content"] = "default_content"
+    #     # if not data.get("title"):
+    #     # data["name"] = data["name"] + "  23"
+    #     # data["done"] = True
+    #     return super().to_internal_value(data)
 
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation["is_active"] = not instance.done
-        #representation["_request_data_method"] = self.context["request"]._request.method
-        # representation["_request_data_url"] = self.context["request"]._request.path
-        return representation
+    # def to_representation(self, instance):
+    #     representation = super().to_representation(instance)
+    #     representation["is_active"] = not instance.done
+    #     #representation["_request_data_method"] = self.context["request"]._request.method
+    #     # representation["_request_data_url"] = self.context["request"]._request.path
+    #     return representation
     #
     # def create(self, validated_data):
     #     if not validated_data.get("author"):
@@ -73,11 +72,11 @@ class TasksSerializer(serializers.ModelSerializer):
     #         validated_data["author"] = User.objects.first()
     #     return super().create(validated_data)
 
-    def update(self, instance, validated_data):
-    #     User = get_user_model()
-    #     author = User.objects.first()
-    #     new_comment = Comment(to_article=instance, author=author, coment="Изменено")
-    #     new_comment.save()
-        validated_data["name"] = validated_data["name"] + "  111"
-        validated_data["done"] = not self.initial_data["is_active"]
-        return super().update(instance, validated_data)
+    # def update(self, instance, validated_data):
+    # #     User = get_user_model()
+    # #     author = User.objects.first()
+    # #     new_comment = Comment(to_article=instance, author=author, coment="Изменено")
+    # #     new_comment.save()
+    #     validated_data["name"] = validated_data["name"] + "  111"
+    #     validated_data["done"] = not self.initial_data["is_active"]
+    #     return super().update(instance, validated_data)

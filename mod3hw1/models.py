@@ -8,10 +8,10 @@ from django.db import models
 class Tasks(models.Model):
     """Задачи"""
 
-    name = models.TextField(
+    title = models.TextField(
         blank=False, null=False, help_text="название задания"
     )  # null is purely database-related, whereas blank is validation-related
-    done = models.BooleanField(blank=False, null=False, help_text="сделано")
+    is_active = models.BooleanField(blank=False, null=False, help_text="сделано")
     created = models.DateTimeField(
         blank=False, null=False, auto_now=True, help_text="дата и время создания"
     )
@@ -21,7 +21,7 @@ class Tasks(models.Model):
 
     def __str__(self):
         """переопределение строкового представления объекта."""
-        return f"Список задач {self.id}|{self.name}|{self.done}|{self.created}|{self.complited}"
+        return f"Список задач {self.id}|{self.title}|{self.is_active}|{self.created}|{self.complited}"
 
     class Meta:
         """установка дополнительных параметров модели"""
@@ -33,8 +33,8 @@ class Tasks(models.Model):
         Устанавливаем время завершения в случае
         наличие отметки выполнения и отсутствии времени завершения
         """
-        if self.done is True and self.complited is None:
+        if self.is_active is False and self.complited is None:
             self.complited = timezone.now()
-        elif self.done is False:
+        elif self.is_active is True:
             self.complited = None
         return super().save(*args, **kwargs)

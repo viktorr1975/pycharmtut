@@ -28,7 +28,7 @@ class TasksViewSet(
     serializer_class = TasksSerializer
 #    filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = TasksFilterSet
-    ordering_fields = ['id', 'name']    #Specifying which fields may be ordered against
+    ordering_fields = ['id', 'title']    #Specifying which fields may be ordered against
     ordering = ['id']                   #default ordering
 
     schema = AutoSchema(
@@ -65,7 +65,7 @@ class TaskCreateView(CreateView):
     """Представление для создания одной задачи."""
 
     model = Tasks
-    fields = ["name", "done"]
+    fields = ["title", "is_active"]
     template_name = "task_create.html"
     success_url = "/opened_tasks/"
 
@@ -75,7 +75,7 @@ class TaskUpdateView(UpdateView):
 
     model = Tasks
     context_object_name = "task"
-    fields = ("id", "name", "done")
+    fields = ("id", "title", "is_active")
     template_name = "task_update.html"
 
     def get_success_url(self):
