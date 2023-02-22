@@ -33,7 +33,7 @@
 ### Запуск программы
 1. ``git clone https://github.com/viktorr1975/pycharmtut.git *homework*``
 2. ``cd *homework*``
-3. ``git checkout result``
+3. ``git checkout DRF_API``
 4. ``pip install -r requirements.txt``
 5. ``python manage.py runserver``
 6. Зайти на сайт http://127.0.0.1:8000/admin (логин `admin`, пароль `admin`)
