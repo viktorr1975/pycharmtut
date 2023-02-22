@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2>Удаление задачи №{{ task.id }}</h2>
-    <p>Действительно хотите удалить: {{ task.name }}?</p>
+    <p>Действительно хотите удалить: {{ task.title }}?</p>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

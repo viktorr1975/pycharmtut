@@ -9,9 +9,9 @@ class TasksAdmin(admin.ModelAdmin):
 
     list_display = (  # отображение данных по столбцам
         "id",
-        "name",
-        "done",
+        "title",
+        "is_active",
         "created",
         "complited",
     )
-    search_fields = ("name",)  # поиск задачи по названию
+    search_fields = ("title",)  # поиск задачи по названию

@@ -1,0 +1,259 @@
+openapi: 3.0.2
+info:
+  title: Studying
+  version: 1.0.0
+  description: "API for all things \u2026"
+paths:
+  /api/tasks/:
+    get:
+      operationId: listTasks
+      description: DRF API
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: title
+        required: false
+        in: query
+        description: title
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=400&limit=100
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=200&limit=100
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tasks'
+          description: ''
+      tags:
+      - Tasks
+    post:
+      operationId: createTasks
+      description: DRF API
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+          description: ''
+      tags:
+      - Tasks
+  /api/tasks/{id}/:
+    get:
+      operationId: retrieveTasks
+      description: DRF API
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tasks.
+        schema:
+          type: string
+      - name: title
+        required: false
+        in: query
+        description: title
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+          description: ''
+      tags:
+      - Tasks
+    put:
+      operationId: updateTasks
+      description: DRF API
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tasks.
+        schema:
+          type: string
+      - name: title
+        required: false
+        in: query
+        description: title
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+          description: ''
+      tags:
+      - Tasks
+    patch:
+      operationId: partialUpdateTasks
+      description: DRF API
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tasks.
+        schema:
+          type: string
+      - name: title
+        required: false
+        in: query
+        description: title
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+          description: ''
+      tags:
+      - Tasks
+    delete:
+      operationId: destroyTasks
+      description: DRF API
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tasks.
+        schema:
+          type: string
+      - name: title
+        required: false
+        in: query
+        description: title
+        schema:
+          type: string
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - Tasks
+components:
+  schemas:
+    Tasks:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          description: "\u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0437\u0430\
+            \u0434\u0430\u043D\u0438\u044F"
+        is_active:
+          type: boolean
+          description: "\u0441\u0434\u0435\u043B\u0430\u043D\u043E"
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          description: "\u0434\u0430\u0442\u0430 \u0438 \u0432\u0440\u0435\u043C\u044F\
+            \ \u0441\u043E\u0437\u0434\u0430\u043D\u0438\u044F"
+        complited:
+          type: string
+          format: date-time
+          nullable: true
+          description: "\u0434\u0430\u0442\u0430 \u0438 \u0432\u0440\u0435\u043C\u044F\
+            \ \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F"
+      required:
+      - title
+      - is_active
