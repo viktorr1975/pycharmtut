@@ -7,11 +7,11 @@
 	 	<h2>Редактируйте задачу № {{task.id}}</h2>
             <div class="form-group">
                 <label>Название задачи: </label>
-                {{ form.name }}
+                {{ form.title }}
             </div>
 			<div class="form-group">
                 <label>Выполнено: </label>
-                {{ form.done }}
+                {{ form.is_active }}
             </div>
 		<div class="form-buttons">
 			<input type="submit" value="Сохранить" class="btn btn-primary"/>
