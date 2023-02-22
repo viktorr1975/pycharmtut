@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from .models import Tasks
 from django.contrib.auth import get_user_model
-#from drf_extra_fields.fields import Base64ImageField
+
+# from drf_extra_fields.fields import Base64ImageField
 
 # class NonModelSerializer(serializers.Serializer):
 #     """Сериализатор с не-модельными полями."""
@@ -36,8 +37,7 @@ class TasksSerializer(serializers.ModelSerializer):
         # read_only_fields = ["id", "slug", "created", "modified"]
         # fields = read_only_fields + ["title"]
         fields = "__all__"
-        
-        
+
         # fields = "__all__"
         # fields = ("id", "title", "content", "author")
         # exclude = []

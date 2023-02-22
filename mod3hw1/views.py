@@ -13,6 +13,7 @@ from .serializers import TasksSerializer
 from .filters import TasksFilterSet
 from rest_framework.schemas.openapi import AutoSchema
 
+
 # Create your views here.
 class TasksViewSet(
     mixins.ListModelMixin,  # GET /articles
@@ -20,22 +21,23 @@ class TasksViewSet(
     mixins.RetrieveModelMixin,  # GET /articles/1
     mixins.DestroyModelMixin,  # DELETE /articles/1
     mixins.UpdateModelMixin,  # PUT /articles/1
-    viewsets.GenericViewSet
+    viewsets.GenericViewSet,
 ):
     """DRF API"""
 
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
-#    filter_backends = (filters.DjangoFilterBackend,)
+    #    filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = TasksFilterSet
-    ordering_fields = ['id', 'title']    #Specifying which fields may be ordered against
-    ordering = ['id']                   #default ordering
+    ordering_fields = ["id", "title"]  # Specifying which fields may be ordered against
+    ordering = ["id"]  # default ordering
 
     schema = AutoSchema(
-        tags=['Tasks'],
-        component_name='Tasks',
-        operation_id_base='Tasks',
+        tags=["Tasks"],
+        component_name="Tasks",
+        operation_id_base="Tasks",
     )
+
 
 class AllTasksListView(ListView):
     """Представление для отображения списка назавершённых задач."""
